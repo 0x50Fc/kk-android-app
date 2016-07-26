@@ -1,0 +1,25 @@
+<layout width="100%" height="100%">
+    <canvas width="100%" height="100%" background-color="#1d2228"></canvas>
+    <layout width="100%" height="100%" layout="flow">
+        <touch width="20%" height="100%" status="selected" class="bottombar" action="selected" value="match">
+            <text width="auto" height="auto" font="14dp" top="18dp" left="auto" right="auto">意向</text>
+            <text width="auto" height="auto" font="9dp" top="auto" bottom="18dp" left="auto" right="auto">Match</text>
+        </touch>
+        <touch width="20%" height="100%" class="bottombar">
+            <text width="auto" height="auto" font="14dp" top="18dp" left="auto" right="auto" action="selected" value="news">资讯</text>
+            <text width="auto" height="auto" font="9dp" top="auto" bottom="18dp" left="auto" right="auto">News</text>
+        </touch>
+        <touch width="20%" height="100%" class="bottombar">
+            <text width="auto" height="auto" font="14dp" top="18dp" left="auto" right="auto" action="selected" value="markets">行情</text>
+            <text width="auto" height="auto" font="9dp" top="auto" bottom="18dp" left="auto" right="auto">Markets</text>
+        </touch>
+        <touch width="20%" height="100%" class="bottombar">
+            <text width="auto" height="auto" font="14dp" top="18dp" left="auto" right="auto" action="selected" value="portfolio">自选</text>
+            <text width="auto" height="auto" font="9dp" top="auto" bottom="18dp" left="auto" right="auto">Portfolio</text>
+        </touch>
+        <touch width="20%" height="100%" class="bottombar">
+            <text width="auto" height="auto" font="14dp" top="18dp" left="auto" right="auto" action="selected" value="me">个人</text>
+            <text width="auto" height="auto" font="9dp" top="auto" bottom="18dp" left="auto" right="auto">Me</text>
+        </touch>
+    </layout>
+</layout>

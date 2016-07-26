@@ -1,0 +1,39 @@
+
+layout {
+    element:cn.kkserver.view.document.LayoutElement;
+}
+
+touch {
+    element:cn.kkserver.view.document.TouchElement;
+}
+
+canvas {
+    element:cn.kkserver.view.document.CanvasElement;
+}
+
+text {
+    element:cn.kkserver.view.document.TextElement;
+}
+
+img {
+    element:cn.kkserver.view.document.ImageElement;
+}
+
+scroll {
+    element:cn.kkserver.view.document.ViewElement;
+    view:cn.kkserver.view.ScrollView;
+}
+
+view {
+    element:cn.kkserver.view.document.ViewElement;
+    view:cn.kkserver.view.ElementView;
+}
+
+.bottombar {
+    color: #41464b;
+}
+
+.bottombar:selected {
+    color: #4494ee;
+}
+

@@ -1,0 +1,8 @@
+<app>
+    <match uri="R.xml.match"></match>
+    <news uri="R.xml.news"></news>
+    <market uri="R.xml.market"></market>
+    <portfolio uri="R.xml.portfolio"></portfolio>
+    <me uri="R.xml.me"></me>
+    <bottombar uri="R.xml.bottombar"></bottombar>
+</app>

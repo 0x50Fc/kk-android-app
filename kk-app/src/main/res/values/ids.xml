@@ -2,10 +2,10 @@
     <item name="Context" type="id"></item>
     <item name="Activity" type="id"></item>
     <item name="Application" type="id"></item>
-    <item name="FragmentManager" type="id"></item>
     <item name="Fragment" type="id"></item>
     <item name="StyleSheet" type="id"></item>
     <item name="Document" type="id"></item>
     <item name="ElementObserver" type="id"></item>
     <item name="DocumentView" type="id"></item>
+    <item name="Startup" type="id"></item>
 </resources>

@@ -1,9 +1,11 @@
 package cn.kkserver.demo;
 
+import android.content.pm.ActivityInfo;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import cn.kkserver.app.App;
 import cn.kkserver.view.style.StyleSheet;
@@ -21,10 +23,14 @@ public class MainActivity extends FragmentActivity {
 
         setContentView(R.layout.activity_main);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+
         Unit unit = new Unit();
 
-        unit.displayScale = getResources().getDisplayMetrics().density;
-        unit.dp = 1;
+        unit.displayScale = metrics.density;
+        unit.dp = Math.min(metrics.widthPixels,metrics.heightPixels) / 320f;
 
         Value.push(unit);
 
@@ -40,31 +46,7 @@ public class MainActivity extends FragmentActivity {
 
             _app.set(R.id.StyleSheet,styleSheet);
 
-            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-
-            App p = _app.find("bottombar");
-
-            if(p != null) {
-                Fragment fragment = p.getFragment();
-                trans.replace(R.id.bottomBar,fragment);
-            }
-
-            p = _app.firstChild();
-
-            while(p != null) {
-
-                if(!"bottombar".equals(p.name())) {
-
-                    Fragment fragment = p.getFragment();
-                    trans.replace(R.id.contentView,fragment);
-
-                    break;
-                }
-
-                p = p.nextSibling();
-            }
-
-            trans.commit();
+            _app.run();
 
         } catch (Throwable e) {
             Log.d("app", e.getMessage(),e);

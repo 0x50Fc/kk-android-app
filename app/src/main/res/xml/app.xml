@@ -1,8 +1,8 @@
-<app>
-    <match uri="R.xml.match"></match>
-    <news uri="R.xml.news"></news>
-    <market uri="R.xml.market"></market>
-    <portfolio uri="R.xml.portfolio"></portfolio>
-    <me uri="R.xml.me"></me>
-    <bottombar uri="R.xml.bottombar"></bottombar>
+<app startup="cn.kkserver.demo.main.Startup">
+    <match uri="R.xml.match" startup="cn.kkserver.demo.match.Startup"></match>
+    <news uri="R.xml.news" startup="cn.kkserver.demo.main.Content"></news>
+    <market uri="R.xml.market" startup="cn.kkserver.demo.main.Content"></market>
+    <portfolio uri="R.xml.portfolio" startup="cn.kkserver.demo.main.Content"></portfolio>
+    <me uri="R.xml.me" startup="cn.kkserver.demo.main.Content"></me>
+    <bottombar uri="R.xml.bottombar" startup="cn.kkserver.demo.main.BottomBar"></bottombar>
 </app>

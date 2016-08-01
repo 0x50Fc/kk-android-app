@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.util.SparseArray;
@@ -272,7 +273,6 @@ public class App extends Observer {
         return this;
     }
 
-
     public Outlet on(String[] keys) {
         Outlet v = new Outlet(keys,this);
         on(v,keys);
@@ -317,19 +317,6 @@ public class App extends Observer {
 
         while(app != null
                 && (v = (Activity) app.get(R.id.Activity)) == null) {
-            app = app.parent();
-        }
-
-        return v;
-    }
-
-    public FragmentManager getFragmentManager() {
-
-        App app = this;
-        FragmentManager v = null;
-
-        while(app != null
-                && (v = (FragmentManager) app.get(R.id.FragmentManager)) == null) {
             app = app.parent();
         }
 
@@ -389,6 +376,8 @@ public class App extends Observer {
         }
     }
 
+    private ElementEventCallback _eventCallback = new ElementEventCallback(this);
+
     public Document getDocument() {
 
         Document document = (Document) get(R.id.Document);
@@ -396,7 +385,7 @@ public class App extends Observer {
         if(document == null) {
             document = new Document();
             document.setStyleSheet(getStyleSheet());
-            document.on(Pattern.compile("^element\\.action$"), new ElementEventCallback(this));
+            document.on(Pattern.compile("^element\\.action$"), _eventCallback);
 
             set(R.id.Document,document);
 
@@ -515,6 +504,73 @@ public class App extends Observer {
         return v;
     }
 
+    public FragmentManager getFragmentManager() {
+
+        {
+            Fragment v = (Fragment) get(R.id.Fragment);
+
+            if (v != null) {
+                return v.getChildFragmentManager();
+            }
+        }
+
+        {
+            Activity v = getActivity();
+
+            if(v != null && v instanceof FragmentActivity) {
+                return ((FragmentActivity) v).getSupportFragmentManager();
+            }
+        }
+
+        return null;
+    }
+
+    public AppStartup getStartup() {
+
+        AppStartup v =  (AppStartup) get(R.id.Startup);
+
+        if(v == null) {
+
+            String name = Value.stringValue(get(new String[]{"attributes","startup"}),null);
+
+            if(name != null && ! name.isEmpty()) {
+
+                try {
+
+                    Class<?> clazz = Class.forName(name);
+
+                    v = (AppStartup) clazz.newInstance();
+
+                    set(R.id.Startup,v);
+
+                }
+                catch (Throwable e){
+                    Log.d("kk-app",e.getMessage(),e);
+                }
+
+            }
+        }
+
+        return v;
+    }
+
+    public void run() {
+
+        AppStartup v =  getStartup();
+
+        if(v != null) {
+            v.run(this);
+        }
+
+        App p = firstChild();
+
+        while(p != null) {
+            p.run();
+            p = p.nextSibling();
+        }
+
+    }
+
     public App find(String name) {
 
         App p = firstChild();
@@ -554,7 +610,12 @@ public class App extends Observer {
         }
 
         public Outlet to(IObject object,String[] keys) {
-            _inlets.add(new Inlet(object,keys));
+            _inlets.add(new ObjectInlet(object,keys));
+            return this;
+        }
+
+        public Outlet to(Inlet inlet) {
+            _inlets.add(inlet);
             return this;
         }
 
@@ -567,12 +628,32 @@ public class App extends Observer {
 
     }
 
-    private static class Inlet {
+    public static interface Inlet {
+
+        public boolean set(Object value);
+
+    }
+
+    public static abstract class WeakInlet<T> implements Inlet {
+
+        private WeakReference<T> _ref;
+
+        public WeakInlet(T object) {
+            _ref = new WeakReference<T>(object);
+        }
+
+        public T object() {
+            return _ref.get();
+        }
+
+    }
+
+    private static class ObjectInlet implements Inlet {
 
         public final WeakReference<IObject> ref;
         public final String[] keys;
 
-        public Inlet(IObject object,String[] keys) {
+        public ObjectInlet(IObject object,String[] keys) {
             this.ref = new WeakReference<IObject>(object);
             this.keys = keys;
         }

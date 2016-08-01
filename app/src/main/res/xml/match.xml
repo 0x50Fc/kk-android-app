@@ -1,3 +1,125 @@
 <layout width="100%" height="100%">
-    <canvas width="100%" height="100%" background-color="#101419"></canvas>
+    <scroll class="main" layout="flow" width="100%" height="100%-44dp" top="44dp" min-content-height="100%+1px">
+        <view width="100%" height="60dp" reuse="top">
+            <canvas width="100%" height="100%" layout="flow">
+                <!-- 线 -->
+                <width value="1px"></width>
+                <color value="#aa29323D"></color>
+                <move x="0px" y="0px"></move>
+                <line x="100%" y="0px"></line>
+                <draw stroke="true"></draw>
+                <move x="0px" y="100%-1px"></move>
+                <line x="100%" y="100%-1px"></line>
+                <draw stroke="true"></draw>
+                <move x="33%" y="0px"></move>
+                <line x="33%" y="100%"></line>
+                <draw stroke="true"></draw>
+                <move x="67%" y="0px"></move>
+                <line x="67%" y="100%"></line>
+                <draw stroke="true"></draw>
+
+                <layout width="33%" height="100%">
+                    <text width="auto" height="auto" left="auto" right="auto" top="12dp" font="14dp" color="#fff">当前买入意向</text>
+                    <text width="100%" height="auto" top="auto" bottom="12dp" font="16dp" class="rise" text-align="center">18283</text>
+                </layout>
+
+                <layout width="33%" height="100%">
+                    <text width="auto" height="auto" left="auto" right="auto" top="12dp" font="14dp" color="#fff">当前卖出意向</text>
+                    <text width="100%" height="auto" top="auto" bottom="12dp" font="16dp" class="fall" text-align="center">18283</text>
+                </layout>
+
+                <layout width="33%" height="100%">
+                    <text width="auto" height="auto" left="auto" right="auto" top="12dp" font="14dp" color="#fff">最近撮合意向</text>
+                    <text width="100%" height="auto" top="auto" bottom="12dp" font="16dp" class="rise" text-align="center">18283</text>
+                </layout>
+            </canvas>
+        </view>
+        <view width="100%" height="28dp" background-color="#181e24" reuse="section">
+            <text width="auto" height="auto" top="auto" bottom="auto" left="12dp" font="12dp" color="#fff">卖出意向</text>
+        </view>
+        <view width="100%" height="30dp" background-color="#0b0e12" reuse="top-section">
+            <scroll width="100%" height="100%" layout="flow" nowarp="true" >
+                <layout width="34%" height="30dp"></layout>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">现价</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向价格</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">最高意向</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">最低意向</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向金额</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计意向数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计意向金额</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计撮合数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计撮合金额</text>
+                </view>
+            </scroll>
+            <view width="34%" height="30dp" background-color="#000">
+                <text width="100%" height="100%" padding-left="12dp" font="12dp" color="#C5C5C5" vertical-align="middle">名称代码</text>
+            </view>
+        </view>
+        <view width="100%" height="28dp" background-color="#181e24" reuse="section">
+            <text width="auto" height="auto" top="auto" bottom="auto" left="12dp" font="12dp" color="#fff">买入意向</text>
+        </view>
+        <view width="100%" height="30dp" background-color="#0b0e12" reuse="top-section">
+            <scroll width="100%" height="100%" layout="flow" nowarp="true" >
+                <layout width="34%" height="30dp"></layout>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">现价</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向价格</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">最高意向</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">最低意向</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">意向金额</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计意向数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计意向金额</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计撮合数量</text>
+                </view>
+                <view width="33%" height="30dp">
+                    <text width="100%" height="100%" font="12dp" color="#C5C5C5" vertical-align="middle" text-align="right" padding-right="12dp">累计撮合金额</text>
+                </view>
+            </scroll>
+            <view width="34%" height="30dp" background-color="#000">
+                <text width="100%" height="100%" padding-left="12dp" font="12dp" color="#C5C5C5" vertical-align="middle">名称代码</text>
+            </view>
+        </view>
+    </scroll>
+    <view width="100%" height="44dp" >
+        <canvas width="100%" height="44dp" class="topbar">
+            <text class="title">意向</text>
+        </canvas>
+    </view>
 </layout>

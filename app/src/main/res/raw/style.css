@@ -29,11 +29,66 @@ view {
     view:cn.kkserver.view.ElementView;
 }
 
-.bottombar {
+color {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+move {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+line {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+arc {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+draw {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+width {
+    element:cn.kkserver.view.document.PaintElement;
+}
+
+.bottombar text {
     color: #41464b;
 }
 
-.bottombar:selected {
+.bottombar:selected text {
     color: #4494ee;
 }
 
+.topbar {
+    background-color: #1d2228;
+}
+
+.topbar .title {
+    width: auto;
+    height: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    font: 18dp;
+    color: #fff;
+    background-color: clear;
+}
+
+.main {
+
+}
+
+.rise {
+    color: #FD3F1D;
+}
+
+.fall {
+    color: #1FBC23;
+}
+
+.none {
+    color: #999;
+}

@@ -1,3 +1,8 @@
 <layout width="100%" height="100%">
+    <scroll class="main" layout="flow">
 
+    </scroll>
+    <canvas class="topbar">
+        <text class="title">资讯</text>
+    </canvas>
 </layout>
